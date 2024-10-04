@@ -1,4 +1,4 @@
-import { toNano, beginCell } from 'ton';
+import { toNano, beginCell, Address } from 'ton';
 import { getJettonWalletAddress } from '../utils/getJettonWalletAddress';
 import {
   RECEIVER_ADDRESS,
@@ -12,6 +12,11 @@ export const handleSendNot = async (
   tonConnectUI: any,
   userFriendlyAddress: string | null,
 ) => {
+  if (!userFriendlyAddress) {
+    console.error('User address is not available');
+    return;
+  }
+
   const forwardPayload = beginCell()
     .storeUint(0, 32) // 0 opcode means we have a comment
     .storeStringTail('Pass payment!')
@@ -22,7 +27,7 @@ export const handleSendNot = async (
     .storeUint(0, 64) // query id
     .storeCoins(NOT_AMOUNT)
     .storeAddress(RECEIVER_ADDRESS)
-    .storeAddress(RECEIVER_ADDRESS) // response destination
+    .storeAddress(Address.parse(userFriendlyAddress)) // response destination
     .storeBit(0) // no custom payload
     .storeCoins(toNano('0.01')) // forward amount - if >0, will send notification message
     .storeBit(1) // we store forwardPayload as a reference
