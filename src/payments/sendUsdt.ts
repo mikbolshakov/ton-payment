@@ -35,15 +35,23 @@ export const handleSendUsdt = async (
     .endCell();
 
   let jettonWalletAddress;
+  let jettonBalance;
   if (userFriendlyAddress) {
-    jettonWalletAddress = await getJettonWalletAddress(
+    const result = await getJettonWalletAddress(
       userFriendlyAddress,
       USDT_MASTER_ADDRESS,
     );
+    jettonWalletAddress = result.walletAddress;
+    jettonBalance = result.balance;
   }
 
-  if (!jettonWalletAddress) {
+  if (!jettonWalletAddress || !jettonBalance) {
     console.error('Jetton Wallet Address is not available');
+    return;
+  }
+
+  if (jettonBalance < USDT_AMOUNT * 1000) {
+    console.error('Insufficient funds');
     return;
   }
 

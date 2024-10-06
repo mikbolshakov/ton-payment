@@ -35,15 +35,23 @@ export const handleSendNot = async (
     .endCell();
 
   let jettonWalletAddress;
+  let jettonBalance;
   if (userFriendlyAddress) {
-    jettonWalletAddress = await getJettonWalletAddress(
+    const result = await getJettonWalletAddress(
       userFriendlyAddress,
       NOT_MASTER_ADDRESS,
     );
+    jettonWalletAddress = result.walletAddress;
+    jettonBalance = result.balance;
   }
 
-  if (!jettonWalletAddress) {
+  if (!jettonWalletAddress || !jettonBalance) {
     console.error('Jetton Wallet Address is not available');
+    return;
+  }
+
+  if (jettonBalance < NOT_AMOUNT) {
+    console.error('Insufficient funds');
     return;
   }
 

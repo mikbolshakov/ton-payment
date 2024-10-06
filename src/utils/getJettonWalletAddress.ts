@@ -6,7 +6,7 @@ const tonweb = new TonWeb();
 export const getJettonWalletAddress = async (
   ownerAddress: string,
   masterAddress: string,
-): Promise<string | null> => {
+): Promise<{ walletAddress: string | null; balance: number }> => {
   try {
     const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {
       address: masterAddress,
@@ -17,9 +17,20 @@ export const getJettonWalletAddress = async (
     const walletAddress = await jettonMinter.getJettonWalletAddress(
       new TonWeb.utils.Address(ownerAddress),
     );
-    return walletAddress.toString();
+
+    const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
+      address: walletAddress,
+    });
+
+    const data = await jettonWallet.getData();
+    const balance = data.balance;
+
+    return {
+      walletAddress: walletAddress.toString(),
+      balance: parseInt(balance, 10),
+    };
   } catch (error) {
     console.error('Error fetching Jetton Wallet Address:', error);
-    return null;
+    return { walletAddress: null, balance: 0 };
   }
 };
