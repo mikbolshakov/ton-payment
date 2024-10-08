@@ -15,5 +15,5 @@ export const NOT_MASTER_ADDRESS =
 // amount
 export const TON_AMOUNT = toNano('0.08');
 export const TON_FEE = toNano('0.04');
-export const NOT_AMOUNT = toNano('7');
+export const NOT_AMOUNT = toNano('1');
 export const USDT_AMOUNT = 0.06 * 1_000_000;
