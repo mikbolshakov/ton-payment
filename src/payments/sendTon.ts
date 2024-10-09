@@ -1,13 +1,20 @@
 import { getTxValidUntil, RECEIVER_ADDRESS } from '../utils/transactionConfig';
+import { beginCell } from 'ton';
 import { TON_AMOUNT } from '../utils/transactionConfig';
 
 export const handleSendTon = async (tonConnectUI: any) => {
+  const body = beginCell()
+    .storeUint(0, 32)
+    .storeStringTail('Pass payment!')
+    .endCell();
+
   const tonTransaction = {
     validUntil: getTxValidUntil(),
     messages: [
       {
         address: RECEIVER_ADDRESS.toString(),
         amount: TON_AMOUNT.toString(),
+        payload: body.toBoc().toString('base64'),
       },
     ],
   };
