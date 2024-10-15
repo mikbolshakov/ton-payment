@@ -19,7 +19,7 @@ export const handleSendUsdt = async (
 
   const forwardPayload = beginCell()
     .storeUint(0, 32) // 0 opcode means we have a comment
-    .storeStringTail('Pass payment!')
+    .storeStringTail('USDT Pass payment!')
     .endCell();
 
   const usdtMessageBody = beginCell()

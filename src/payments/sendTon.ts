@@ -1,11 +1,14 @@
-import { getTxValidUntil, RECEIVER_ADDRESS } from '../utils/transactionConfig';
+import {
+  getTxValidUntil,
+  RECEIVER_ADDRESS,
+  TON_AMOUNT,
+} from '../utils/transactionConfig';
 import { beginCell } from 'ton';
-import { TON_AMOUNT } from '../utils/transactionConfig';
 
 export const handleSendTon = async (tonConnectUI: any) => {
   const body = beginCell()
     .storeUint(0, 32)
-    .storeStringTail('Pass payment!')
+    .storeStringTail('TON Pass payment!')
     .endCell();
 
   const tonTransaction = {

@@ -19,7 +19,7 @@ export const handleSendNot = async (
 
   const forwardPayload = beginCell()
     .storeUint(0, 32) // 0 opcode means we have a comment
-    .storeStringTail('Pass payment!')
+    .storeStringTail('NOT Pass payment!')
     .endCell();
 
   const notMessageBody = beginCell()
