@@ -4,11 +4,14 @@ import {
   TON_AMOUNT,
 } from '../utils/transactionConfig';
 import { beginCell } from 'ton';
+import { v4 as uuidv4 } from 'uuid';
 
 export const handleSendTon = async (tonConnectUI: any) => {
+  const uniqueHash = uuidv4();
+
   const body = beginCell()
     .storeUint(0, 32)
-    .storeStringTail('TON Pass payment!')
+    .storeStringTail(`TON Pass payment! - ${uniqueHash}`)
     .endCell();
 
   const tonTransaction = {
