@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getTONExchangeRate = async (): Promise<number> => {
+export const getTonExchangeRate = async (): Promise<number> => {
   try {
     const response = await axios.get(
       'https://api.coingecko.com/api/v3/coins/the-open-network',

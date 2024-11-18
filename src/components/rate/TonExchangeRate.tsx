@@ -1,12 +1,13 @@
 import { FC, useEffect, useState } from 'react';
-import { getTONExchangeRate } from '../utils/getTONExchangeRate';
+import { getTonExchangeRate } from '../../utils/getTONExchangeRate';
+import './TonExchangeRate.css';
 
 const TonExchangeRate: FC = () => {
   const [exchangeRate, setExchangeRate] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchExchangeRate = async () => {
-      const rate = await getTONExchangeRate();
+      const rate = await getTonExchangeRate();
       setExchangeRate(rate);
     };
 
@@ -18,7 +19,7 @@ const TonExchangeRate: FC = () => {
       {exchangeRate !== null ? (
         <div>
           <p>TON exchange rate: {exchangeRate.toFixed(2)}$</p>
-          <p>1,5$ equivalent: {(1.5 / exchangeRate).toFixed(2)} TON</p>
+          <p>1,5$ equivalent: {(1.5 / exchangeRate).toFixed(3)} TON</p>
         </div>
       ) : (
         <p>Loading data...</p>

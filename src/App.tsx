@@ -1,45 +1,16 @@
-import {
-  TonConnectButton,
-  useTonConnectUI,
-  useTonAddress,
-} from '@tonconnect/ui-react';
-import { handleSendTon } from './payments/sendTon';
-import { handleSendUsdt } from './payments/sendUsdt';
-import { handleSendNot } from './payments/sendNot';
-import TonExchangeRate from './components/ExchangeRate';
+import { TonConnectButton } from '@tonconnect/ui-react';
+import TonExchangeRate from './components/rate/TonExchangeRate';
+import AddressDisplay from './components/addresses/AddressDisplay';
+import ActionButtons from './components/buttons/ActionButtons';
 import './App.css';
 
 const App: React.FC = () => {
-  const [tonConnectUI] = useTonConnectUI();
-  const userFriendlyAddress = useTonAddress();
-  const rawAddress = useTonAddress(false);
-
   return (
     <div className="container">
       <TonExchangeRate />
-      <br />
       <TonConnectButton />
-      <br />
-      <div>
-        <span>User-friendly address: {userFriendlyAddress}</span>
-        <br />
-        <span>Raw address: {rawAddress}</span>
-      </div>
-      <br />
-      <br />
-      <div className="button-group">
-        <button onClick={() => handleSendTon(tonConnectUI)}>Send TON</button>
-        <button
-          onClick={() => handleSendUsdt(tonConnectUI, userFriendlyAddress)}
-        >
-          Send USDT
-        </button>
-        <button
-          onClick={() => handleSendNot(tonConnectUI, userFriendlyAddress)}
-        >
-          Send NOT
-        </button>
-      </div>
+      <AddressDisplay />
+      <ActionButtons />
     </div>
   );
 };

@@ -1,0 +1,9 @@
+p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+p:last-child {
+  color: #888;
+  font-style: italic;
+}
