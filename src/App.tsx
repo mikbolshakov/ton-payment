@@ -6,6 +6,7 @@ import {
 import { handleSendTon } from './payments/sendTon';
 import { handleSendUsdt } from './payments/sendUsdt';
 import { handleSendNot } from './payments/sendNot';
+import TonExchangeRate from './components/ExchangeRate';
 import './App.css';
 
 const App: React.FC = () => {
@@ -15,6 +16,8 @@ const App: React.FC = () => {
 
   return (
     <div className="container">
+      <TonExchangeRate />
+      <br />
       <TonConnectButton />
       <br />
       <div>
@@ -22,6 +25,7 @@ const App: React.FC = () => {
         <br />
         <span>Raw address: {rawAddress}</span>
       </div>
+      <br />
       <br />
       <div className="button-group">
         <button onClick={() => handleSendTon(tonConnectUI)}>Send TON</button>

@@ -1,6 +1,7 @@
 import { Address } from 'ton';
 import { toNano } from 'ton';
 
+// 10 min
 export const getTxValidUntil = () => Math.floor(Date.now() / 1000) + 600;
 
 // addresses
