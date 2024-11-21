@@ -1,17 +1,18 @@
+import { TonConnectUI } from '@tonconnect/ui-react';
+import { beginCell } from 'ton';
+import { v4 as uuidv4 } from 'uuid';
 import {
   getTxValidUntil,
   RECEIVER_ADDRESS,
   TON_AMOUNT,
 } from '../utils/transactionConfig';
-import { beginCell } from 'ton';
-import { v4 as uuidv4 } from 'uuid';
 
-export const handleSendTon = async (tonConnectUI: any) => {
+export const handleSendTon = async (tonConnectUI: TonConnectUI) => {
   const uniqueHash = uuidv4();
 
   const body = beginCell()
     .storeUint(0, 32)
-    .storeStringTail(`TON Pass payment! - ${uniqueHash}`)
+    .storeStringTail(`TON payment! - ${uniqueHash}`)
     .endCell();
 
   const tonTransaction = {

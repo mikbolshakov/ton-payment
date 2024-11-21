@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+## 🌐 TON Blockchain Payment Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates how to integrate with the TON blockchain for seamless payments and wallet connectivity. Built using **Vite**, it supports payments in **Toncoin**, **USDT** and **Notcoin**. Additionally, the app fetches and displays the real-time **Toncoin exchange rate** using the **CoinGecko API**.
 
-## Available Scripts
+### 🚀 Quick Start
 
-In the project directory, you can run:
+#### Prerequisites
 
-### `npm start`
+Ensure you have the following installed:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Node.js](https://nodejs.org/) (version 16+)
+- [npm](https://www.npmjs.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Installation
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/mikbolshakov/ton-payment.git
+```
 
-### `npm run build`
+2. Install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the development server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run dev
+```
 
-### `npm run eject`
+4. Open your browser and navigate to the provided local URL (usually `http://localhost:5173`).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> ⚠️ **Note:** The project does not require `.env` file.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🛠️ How It Works
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Wallet Connection**:
+- Uses TonConnect to establish a secure connection with a TON wallet.
+- Displays the wallet address after a successful connection.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Payment Integration**:
+- Multiple payment options for Toncoin, USDT and Notcoin.
+- Starts the transaction process.
 
-## Learn More
+- **Exchange Rate Display**:
+- Fetches the latest Toncoin-to-USD conversion rate using CoinGecko.
+- Real-time updates to reflect current market trends.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🌍 Built With
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Vite**: Lightning-fast development environment.
+- **React**: Modern UI library for building interactive interfaces.
+- **TonConnect**: Simplified wallet integration with the TON blockchain.
+- **CoinGecko API**: For fetching exchange rates.

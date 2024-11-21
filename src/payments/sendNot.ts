@@ -1,5 +1,6 @@
 import { toNano, beginCell, Address } from 'ton';
 import { getJettonWalletAddress } from '../utils/getJettonWalletAddress';
+import { TonConnectUI } from '@tonconnect/ui-react';
 import {
   RECEIVER_ADDRESS,
   getTxValidUntil,
@@ -9,7 +10,7 @@ import {
 } from '../utils/transactionConfig';
 
 export const handleSendNot = async (
-  tonConnectUI: any,
+  tonConnectUI: TonConnectUI,
   userFriendlyAddress: string | null,
 ) => {
   if (!userFriendlyAddress) {
@@ -19,7 +20,7 @@ export const handleSendNot = async (
 
   const forwardPayload = beginCell()
     .storeUint(0, 32) // 0 opcode means we have a comment
-    .storeStringTail('NOT Pass payment!')
+    .storeStringTail('NOT payment!')
     .endCell();
 
   const notMessageBody = beginCell()

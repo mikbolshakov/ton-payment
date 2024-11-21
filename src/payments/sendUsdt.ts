@@ -1,5 +1,6 @@
 import { toNano, beginCell, Address } from 'ton';
 import { getJettonWalletAddress } from '../utils/getJettonWalletAddress';
+import { TonConnectUI } from '@tonconnect/ui-react';
 import {
   RECEIVER_ADDRESS,
   getTxValidUntil,
@@ -9,7 +10,7 @@ import {
 } from '../utils/transactionConfig';
 
 export const handleSendUsdt = async (
-  tonConnectUI: any,
+  tonConnectUI: TonConnectUI,
   userFriendlyAddress: string | null,
 ) => {
   if (!userFriendlyAddress) {
