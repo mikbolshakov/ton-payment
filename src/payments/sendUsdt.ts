@@ -46,13 +46,13 @@ export const handleSendUsdt = async (
     jettonBalance = result.balance;
   }
 
-  if (!jettonBalance || jettonBalance < USDT_AMOUNT) {
-    alert('Insufficient funds');
+  if (!jettonWalletAddress) {
+    alert('Jetton Wallet Address is not available');
     return;
   }
 
-  if (!jettonWalletAddress) {
-    alert('Jetton Wallet Address is not available');
+  if (!jettonBalance || jettonBalance < USDT_AMOUNT) {
+    alert('Insufficient funds');
     return;
   }
 

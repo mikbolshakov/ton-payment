@@ -1,4 +1,5 @@
 import TonWeb from 'tonweb';
+const { JettonMinter, JettonWallet } = TonWeb.token.jetton;
 
 const tonweb = new TonWeb();
 
@@ -8,17 +9,17 @@ export const getJettonWalletAddress = async (
   masterAddress: string,
 ): Promise<{ walletAddress: string | null; balance: number }> => {
   try {
-    const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {
+    const jettonMinter = new JettonMinter(tonweb.provider, {
       address: masterAddress,
       adminAddress: new TonWeb.utils.Address(masterAddress),
       jettonContentUri: '',
-      jettonWalletCodeHex: '...',
+      jettonWalletCodeHex: JettonWallet.codeHex,
     });
     const walletAddress = await jettonMinter.getJettonWalletAddress(
       new TonWeb.utils.Address(ownerAddress),
     );
 
-    const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
+    const jettonWallet = new JettonWallet(tonweb.provider, {
       address: walletAddress,
     });
 
